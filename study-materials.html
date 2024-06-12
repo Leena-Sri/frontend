@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Materials</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #d2d5d7, #ffffff , #fae2f2 ,#e7e7e7 ,  #fbfff0);
+            
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.filters {
+    margin-top: 10px;
+}
+
+.filters select {
+    margin-right: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.main {
+    padding: 20px;
+}
+
+#study-materials {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.study-material {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.study-material:hover {
+    transform: translateY(-5px);
+}
+
+.study-material img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Study Materials</h1>
+        <div class="filters">
+            <select id="class-filter">
+                <option value="all">All Classes</option>
+                <option value="1">Class 1</option>
+                <option value="2">Class 2</option>
+                <option value="3">Class 3</option>
+                <option value="4">Class 4</option>
+                <option value="5">Class 5</option>
+                <option value="6">Class 6</option>
+                <option value="7">Class 7</option>
+                <option value="8">Class 8</option>
+                <option value="9">Class 9</option>
+                <option value="10">Class 10</option>
+                <option value="11">Class 11</option>
+                <option value="12">Class 12</option>
+                <!-- Add more options for other classes -->
+            </select>
+            <select id="language-filter">
+                <option value="all">All Languages</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="telugu">Telugu</option>
+                <option value="tamil">Tamil</option>
+                <option value="malyalam">Malyalam</option>
+                <option value="marati">Marati</option>
+                <!-- Add more options for other languages -->
+            </select>
+        </div>
+    </header>
+    <main>
+        <section id="study-materials" class="container">
+            <!-- Study materials will be dynamically added here using JavaScript -->
+        </section>
+    </main>
+    <footer>
+            <p>&copy; 2024 Education in Rural Areas</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to create study material element
+            function createStudyMaterialElement(material) {
+                const materialElement = document.createElement("div");
+                materialElement.classList.add("study-material");
+                materialElement.innerHTML = `
+                    <img src="${material.cover}" alt="${material.title}">
+                    <h3>${material.title}</h3>
+                    <p>${material.class} | ${material.language}</p>
+                `;
+                return materialElement;
+            }
+        
+            // Dummy data for study materials (NCERT books)
+            const studyMaterials = [
+            { class: "Class 1", language: "Hindi", title: "रिमझिम", cover: "science-4989678_1280.png" },
+            { class: "Class 1", language: "English", title: "रिमझिम", cover: "mathematics-2369151_1280.jpg" },
+            { class: "Class 1", language: "Telugu", title: "रिमझिम", cover: "geometry-625155_1280.jpg" },
+            { class: "Class 2", language: "Hindi", title: "रिमझिम", cover: "dna-3539309_1280.jpg" },
+            { class: "Class 2", language: "Telugu", title: "रिमझिम", cover: "background-1853251_1280.jpg" },
+            { class: "Class 2", language: "English", title: "Math Magic", cover: "analysis-2030265_1280.jpg" },
+                { class: "Class 3", language: "Hindi", title: "रिमझिम", cover: "a-book-1853677_1280.jpg" },
+                { class: "Class 3", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 3", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 4", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 4", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 4", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 5", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 5", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 5", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 6", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 6", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 6", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 7", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 7", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 7", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 8", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 8", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 8", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 9", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 9", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 9", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 10", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 10", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 10", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 11", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 11", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 11", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 12", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                { class: "Class 12", language: "Telugu", title: "रिमझिम", cover: "htip" },
+                { class: "Class 12", language: "Hindi", title: "रिमझिम", cover: "htip" },
+                // Add more study materials here
+            ];
+            // Dummy data for study materials (placeholder
+
+        
+            const studyMaterialsSection = document.getElementById("study-materials");
+        
+            // Function to filter study materials based on class and language
+            function filterStudyMaterials() {
+                const classFilter = document.getElementById("class-filter").value;
+                const languageFilter = document.getElementById("language-filter").value;
+        
+                // Clear existing study materials
+                studyMaterialsSection.innerHTML = "";
+        
+                // Filter study materials based on selected filters
+                const filteredMaterials = studyMaterials.filter(material => {
+                    if (classFilter !== "all" && material.class !== classFilter) {
+                        return false;
+                    }
+                    if (languageFilter !== "all" && material.language.toLowerCase() !== languageFilter.toLowerCase()) {
+                        return false;
+                    }
+                    return true;
+                });
+        
+                // Render filtered study materials
+                filteredMaterials.forEach(material => {
+                    const materialElement = createStudyMaterialElement(material);
+                    studyMaterialsSection.appendChild(materialElement);
+                });
+            }
+        
+            // Event listeners for filter change
+            document.getElementById("class-filter").addEventListener("change", filterStudyMaterials);
+            document.getElementById("language-filter").addEventListener("change", filterStudyMaterials);
+        
+            // Initial rendering of study materials
+            filterStudyMaterials();
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans</title>
+    <style>
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #51ded5;
+    color: #333;
+}
+h1{
+    text-align: center;
+    color: brown;
+    font-size: 90px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    background-color: #ff9f00;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters label, .filters select {
+    margin-right: 10px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#loan-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.loan-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.loan-card:hover {
+    transform: translateY(-5px);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Loans and Scholarships</h1>
+    <header>
+        <div class="filters">
+            <label for="eligibility-filter">Eligibility:</label>
+            <select id="eligibility-filter">
+                <option value="all">All</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+                <!-- Add more options for eligibility -->
+            </select>
+
+            <label for="deadline-filter">Deadline:</label>
+            <select id="deadline-filter">
+                <option value="all">All</option>
+                <option value="1month">Within 1 Month</option>
+                <option value="3months">Within 3 Months</option>
+                <!-- Add more options for deadline -->
+            </select>
+
+            <label for="amount-filter">Amount:</label>
+            <select id="amount-filter">
+                <option value="all">All</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <!-- Add more options for amount -->
+            </select>
+        </div>
+    </header>
+    <main>
+        <section id="loan-cards" class="container">
+            <!-- Loan cards will be dynamically added here using JavaScript -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Education in Rural Areas</p>
+    </footer>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const loanCardsSection = document.getElementById("loan-cards");
+
+    // Dummy data for loan information
+    const loanInformation = [
+        { eligibility: "Undergraduate", deadline: "Within 1 Month", amount: "Low", provider: "Bank A" },
+        { eligibility: "Graduate", deadline: "Within 3 Months", amount: "Medium", provider: "Bank B" },
+        // Add more loan information
+    ];
+
+    // Function to create loan card element
+    function createLoanCardElement(loan) {
+        const loanCardElement = document.createElement("div");
+        loanCardElement.classList.add("loan-card");
+        loanCardElement.innerHTML = `
+            <h3>${loan.provider}</h3>
+            <p><strong>Eligibility:</strong> ${loan.eligibility}</p>
+            <p><strong>Deadline:</strong> ${loan.deadline}</p>
+            <p><strong>Amount:</strong> ${loan.amount}</p>
+        `;
+        return loanCardElement;
+    }
+
+    // Render loan cards
+    loanInformation.forEach(loan => {
+        const loanCardElement = createLoanCardElement(loan);
+        loanCardsSection.appendChild(loanCardElement);
+    });
+});
+
+    </script>
+</body>
+</html>
